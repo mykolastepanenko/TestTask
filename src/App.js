@@ -10,11 +10,11 @@ let mytimer;
 let stream$ = new Observable((observable) => {
   mytimer = setInterval(() => {
     seconds++;
-    if (seconds == 60) {
+    if (seconds === 60) {
       seconds = 0;
       minutes++;
     }
-    if (minutes == 60) {
+    if (minutes === 60) {
       minutes = 0;
       hours++;
     }
@@ -43,7 +43,7 @@ function App() {
 
   function startStop() {
     setStart(!allowStart);
-    if (allowStart == true) {
+    if (allowStart === true) {
       startSubscription();
     } else {
       zeroing();
@@ -54,7 +54,7 @@ function App() {
 
   function wait() {
     let time = new Date().getTime();
-    if (time - clickTimer < 300 && allowWait == true) {
+    if (time - clickTimer < 300 && allowWait === true) {
       clearInterval(mytimer);
       setStart(!allowStart);
       setReset(true);
@@ -63,7 +63,7 @@ function App() {
   }
 
   function reset() {
-    if (allowStart == false || allowReset == true) {
+    if (allowStart === false || allowReset === true) {
       setStart(false);
       zeroing();
       startSubscription();
